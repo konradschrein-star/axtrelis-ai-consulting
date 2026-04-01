@@ -152,7 +152,7 @@ export default function DatenschutzPage() {
                   Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung
                   vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine
                   verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des
-                  Browsers von "http://" auf "https://" wechselt und an dem Schloss-Symbol
+                  Browsers von &quot;http://&quot; auf &quot;https://&quot; wechselt und an dem Schloss-Symbol
                   in Ihrer Browserzeile.
                 </p>
                 <p className="mt-3">

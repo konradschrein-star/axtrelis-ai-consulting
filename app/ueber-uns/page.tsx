@@ -211,7 +211,7 @@ export default function UeberUnsPage() {
                   KI funktioniert pragmatisch
                 </h3>
                 <p className="text-text-secondary leading-relaxed">
-                  Wir glauben nicht an die "Revolution". Wir glauben an konkrete Prozesse,
+                  Wir glauben nicht an die &quot;Revolution&quot;. Wir glauben an konkrete Prozesse,
                   die KI heute schon besser macht — und genau dort setzen wir an.
                 </p>
               </div>

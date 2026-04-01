@@ -155,8 +155,8 @@ export default function WorkshopPage() {
                   </svg>
                 </div>
                 <p className="text-text-secondary leading-relaxed">
-                  <strong className="text-white">Kein theoretischer Vortrag</strong> über "die Zukunft
-                  der KI". Wir sprechen nur über das, was heute schon funktioniert.
+                  <strong className="text-white">Kein theoretischer Vortrag</strong> über &quot;die Zukunft
+                  der KI&quot;. Wir sprechen nur über das, was heute schon funktioniert.
                 </p>
               </div>
 
