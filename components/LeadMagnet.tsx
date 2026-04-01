@@ -1,10 +1,14 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
 export default function LeadMagnet() {
   // Tally Form ID
   const TALLY_FORM_ID = 'ODYzOg';
+
+  // Form visibility state
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   return (
     <section className="py-24 px-6">
@@ -39,30 +43,100 @@ export default function LeadMagnet() {
             </h3>
 
             {/* Description */}
-            <p className="text-text-secondary text-center mb-8 max-w-2xl mx-auto leading-relaxed">
-              7 Seiten kompaktes Wissen: Warum KI-Projekte scheitern, was wirklich
-              funktioniert, und ein Selbstcheck für Ihr Unternehmen.
-            </p>
+            <div className="text-center mb-10 max-w-2xl mx-auto">
+              <p className="text-text-secondary leading-relaxed mb-4">
+                <strong className="text-white">7 Seiten kompaktes Wissen:</strong> Warum KI-Projekte scheitern,
+                was wirklich funktioniert, und ein Selbstcheck für Ihr Unternehmen.
+              </p>
 
-            {/* Tally Form Embed */}
-            <div className="max-w-md mx-auto">
-              <iframe
-                src={`https://tally.so/embed/${TALLY_FORM_ID}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1`}
-                width="100%"
-                height="350"
-                frameBorder="0"
-                marginHeight={0}
-                marginWidth={0}
-                title="PDF Download - Axtrelis"
-                className="rounded-lg"
-              ></iframe>
+              {/* Benefits */}
+              <div className="flex flex-wrap justify-center gap-3 text-sm">
+                <span className="px-3 py-1 bg-accent-primary/10 border border-accent-primary/30 rounded-full text-accent-secondary">
+                  ✓ Sofortiger Download
+                </span>
+                <span className="px-3 py-1 bg-accent-primary/10 border border-accent-primary/30 rounded-full text-accent-secondary">
+                  ✓ 100% Kostenlos
+                </span>
+                <span className="px-3 py-1 bg-accent-primary/10 border border-accent-primary/30 rounded-full text-accent-secondary">
+                  ✓ Keine Verpflichtungen
+                </span>
+              </div>
             </div>
 
-            {/* Info Text */}
-            <p className="text-xs text-text-muted text-center mt-4 max-w-md mx-auto">
-              Nach dem Absenden werden Sie zur Download-Seite weitergeleitet.
-              Ihre E-Mail wird ausschließlich für Updates zu KI-Themen verwendet (Abmeldung jederzeit möglich).
-            </p>
+            {/* CTA Button or Form */}
+            <div className="max-w-lg mx-auto">
+              <AnimatePresence mode="wait">
+                {!isFormVisible ? (
+                  /* CTA Button */
+                  <motion.div
+                    key="button"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-center"
+                  >
+                    <button
+                      onClick={() => setIsFormVisible(true)}
+                      className="group px-10 py-5 bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-bold text-lg rounded-xl shadow-glow hover:shadow-glow-strong hover:scale-105 transition-all duration-300 inline-flex items-center gap-3"
+                    >
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Jetzt kostenlos herunterladen
+                      <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </motion.div>
+                ) : (
+                  /* Form Container */
+                  <motion.div
+                    key="form"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {/* White Card for Form */}
+                    <div className="bg-white rounded-2xl p-8 md:p-10 shadow-2xl border-2 border-accent-primary/30 relative overflow-hidden">
+                      {/* Subtle gradient accent */}
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-primary to-accent-secondary"></div>
+
+                      {/* Close Button */}
+                      <button
+                        onClick={() => setIsFormVisible(false)}
+                        className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors text-gray-600 hover:text-gray-800"
+                        aria-label="Schließen"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+
+                      <iframe
+                        src={`https://tally.so/embed/${TALLY_FORM_ID}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1`}
+                        width="100%"
+                        height="280"
+                        frameBorder="0"
+                        marginHeight={0}
+                        marginWidth={0}
+                        title="PDF Download - Axtrelis"
+                        className="w-full"
+                        style={{ minHeight: '280px' }}
+                      ></iframe>
+                    </div>
+
+                    {/* Info Text */}
+                    <p className="text-xs text-text-secondary text-center mt-6 leading-relaxed">
+                      🔒 Nach dem Absenden werden Sie zur Download-Seite weitergeleitet.<br />
+                      Ihre E-Mail wird ausschließlich für Updates zu KI-Themen verwendet.<br />
+                      <span className="text-accent-primary">Abmeldung jederzeit möglich.</span>
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </motion.div>
       </div>

@@ -1,0 +1,11 @@
+
+> axtrelis-ai-consulting@1.0.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use by process 47852, using available port 3003 instead.
+   ▲ Next.js 15.5.14
+   - Local:        http://localhost:3003
+   - Network:      http://192.168.178.23:3003
+
+ ✓ Starting...
+ ✓ Ready in 3s
