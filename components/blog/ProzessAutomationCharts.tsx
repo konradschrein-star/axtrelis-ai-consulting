@@ -94,7 +94,10 @@ export function ProzessROIChart() {
             callbacks: {
               label: (context) => {
                 const value = context.parsed.y;
-                return `${context.dataset.label}: ${value.toLocaleString('de-DE')} €`;
+                if (typeof value === 'number') {
+                  return `${context.dataset.label}: ${value.toLocaleString('de-DE')} €`;
+                }
+                return '';
               },
             },
           },
