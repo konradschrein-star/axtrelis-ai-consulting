@@ -39,10 +39,10 @@ const teamMembers = [
   },
   {
     name: 'Frederik',
-    role: 'Sales & Vertrieb',
-    specialty: 'Business Development',
+    role: 'Co-Founder',
+    specialty: '',
     linkedin: '#',
-    description: 'Baut strategische Kundenbeziehungen auf und entwickelt Vertriebskonzepte.',
+    description: 'Mitgründer von Axtrelis.',
     image: '/images/team/Frederik.jpeg',
   },
 ];
@@ -63,7 +63,7 @@ export default function TeamTeaser() {
             Das <span className="gradient-text">Team</span> hinter Axtrelis
           </h2>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Drei Gründer, zwei Vertriebsexperten — eine Mission: KI greifbar machen
+            Vier Gründer, ein Vertriebsexperte — eine Mission: KI greifbar machen
           </p>
         </motion.div>
 

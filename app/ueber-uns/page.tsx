@@ -50,12 +50,12 @@ export default function UeberUnsPage() {
     },
     {
       name: 'Frederik',
-      role: 'Sales & Vertrieb',
-      department: 'Business Development',
+      role: 'Co-Founder',
+      department: '',
       image: '/images/team/Frederik.jpeg',
       linkedin: null,
-      bio: 'Unterstützt das Sales-Team und erschließt neue Geschäftsmöglichkeiten.',
-      isFounder: false,
+      bio: 'Mitgründer von Axtrelis.',
+      isFounder: true,
     },
   ];
 
