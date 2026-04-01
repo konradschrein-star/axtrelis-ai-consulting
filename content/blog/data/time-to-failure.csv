@@ -1,0 +1,14 @@
+monat,phase,beschreibung,risiko_level
+1,Euphorie-Phase,Alle sind begeistert - niemand stellt harte Fragen,20
+2,Euphorie-Phase,Kickoff und erste Workshops,25
+3,Daten-Schock,Erste Realitätsprüfung der Datenlage,40
+4,Daten-Schock,Datenqualität-Probleme werden sichtbar,55
+5,Scope Creep,Anforderungen wachsen - Budget schmilzt,70
+6,Scope Creep,Kritischer Moment für Kurskorrektur,75
+7,Adoption-Krise,Tool ist fertig - niemand nutzt es,85
+8,Adoption-Krise,Shadow-IT und Workarounds entstehen,90
+9,Adoption-Krise,Widerstand wird sichtbar,92
+10,Stille Beerdigung,Projekt lebt formell - faktisch tot,95
+11,Stille Beerdigung,Sunk-Cost-Effekt blockiert Entscheidung,96
+12,Stille Beerdigung,Formeller Abschluss ohne Mehrwert,95
+13,Post-Mortem,Ursachen werden selten analysiert,90

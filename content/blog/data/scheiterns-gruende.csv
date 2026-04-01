@@ -1,0 +1,8 @@
+kategorie,faktor,gewicht,scheiterns_beitrag_pct
+Strategie,Business Case fehlt,0.20,42
+Daten,Schlechte Datenqualität,0.18,60
+Prozess,Technologie-First-Ansatz,0.15,67
+Menschen,Fehlender Buy-In,0.15,70
+Erwartung,Unrealistische Versprechen,0.12,55
+Compliance,Vendor Lock-In / DSGVO,0.10,30
+Change,Kein Change Management,0.10,70
