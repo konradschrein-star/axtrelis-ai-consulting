@@ -43,7 +43,7 @@ export default function UeberUnsPage() {
       name: 'Joosten Weber',
       role: 'Sales',
       department: 'Website-Vertrieb',
-      image: '/images/team/placeholder.jpg', // Placeholder bis HEIC konvertiert
+      image: '/images/team/Joosten.jpg',
       linkedin: 'https://www.linkedin.com/in/joosten-weber-300436382/',
       bio: 'Berät Unternehmen bei der digitalen Präsenz und bringt Webste Vertrieb zu neuen Kunden.',
       isFounder: false,
@@ -52,7 +52,7 @@ export default function UeberUnsPage() {
       name: 'Frederik',
       role: 'Sales & Vertrieb',
       department: 'Business Development',
-      image: '/images/team/placeholder.jpg', // Placeholder
+      image: '/images/team/Frederik.jpeg',
       linkedin: null,
       bio: 'Unterstützt das Sales-Team und erschließt neue Geschäftsmöglichkeiten.',
       isFounder: false,

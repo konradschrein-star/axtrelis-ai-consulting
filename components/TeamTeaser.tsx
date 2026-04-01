@@ -43,7 +43,7 @@ const teamMembers = [
     specialty: 'Business Development',
     linkedin: '#',
     description: 'Baut strategische Kundenbeziehungen auf und entwickelt Vertriebskonzepte.',
-    image: '/images/team/placeholder.svg',
+    image: '/images/team/Frederik.jpeg',
   },
 ];
 
