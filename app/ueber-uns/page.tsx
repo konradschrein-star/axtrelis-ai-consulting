@@ -93,13 +93,15 @@ export default function UeberUnsPage() {
                   {/* Photo */}
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-accent-primary to-accent-secondary rounded-full opacity-20 blur-xl"></div>
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      width={128}
-                      height={128}
-                      className="relative rounded-full object-cover border-2 border-accent-primary/20"
-                    />
+                    <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-accent-primary/20">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover object-center"
+                        style={{ aspectRatio: '1/1' }}
+                      />
+                    </div>
                   </div>
 
                   {/* Info */}

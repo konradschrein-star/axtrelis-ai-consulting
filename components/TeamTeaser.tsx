@@ -88,7 +88,8 @@ export default function TeamTeaser() {
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
+                    style={{ aspectRatio: '1/1' }}
                   />
                 </div>
 
