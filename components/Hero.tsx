@@ -14,7 +14,7 @@ export default function Hero() {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          className="absolute inset-0 w-full h-full object-cover opacity-100"
         >
           <source src="/assets/animated-background.mp4" type="video/mp4" />
         </video>
