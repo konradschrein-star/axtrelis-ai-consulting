@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function LeadMagnet() {
   // Tally Form ID
@@ -9,6 +10,43 @@ export default function LeadMagnet() {
 
   // Form visibility state
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [consent, setConsent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email || !consent) return;
+
+    setIsSubmitting(true);
+
+    try {
+      // Submit to Tally in background
+      const formData = new FormData();
+      formData.append('email', email);
+      if (name) formData.append('name', name);
+
+      // Send to Tally (fire and forget)
+      fetch(`https://tally.so/r/${TALLY_FORM_ID}`, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors', // Important: Tally doesn't support CORS
+      }).catch(() => {
+        // Ignore errors - we redirect anyway
+      });
+
+      // Immediate redirect (don't wait for Tally response)
+      router.push('/pdf-download-danke');
+    } catch (error) {
+      console.error('Form submission error:', error);
+      // Redirect anyway
+      router.push('/pdf-download-danke');
+    }
+  };
 
   return (
     <section className="py-24 px-6">
@@ -106,7 +144,7 @@ export default function LeadMagnet() {
                       {/* Close Button */}
                       <button
                         onClick={() => setIsFormVisible(false)}
-                        className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors text-gray-600 hover:text-gray-800"
+                        className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors text-gray-600 hover:text-gray-800 z-10"
                         aria-label="Schließen"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -114,17 +152,80 @@ export default function LeadMagnet() {
                         </svg>
                       </button>
 
-                      <iframe
-                        src={`https://tally.so/embed/${TALLY_FORM_ID}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1`}
-                        width="100%"
-                        height="280"
-                        frameBorder="0"
-                        marginHeight={0}
-                        marginWidth={0}
-                        title="PDF Download - Axtrelis"
-                        className="w-full"
-                        style={{ minHeight: '280px' }}
-                      ></iframe>
+                      {/* Custom Form */}
+                      <form onSubmit={handleSubmit} className="space-y-4">
+                        {/* Name Field (Optional) */}
+                        <div>
+                          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                            Name (optional)
+                          </label>
+                          <input
+                            type="text"
+                            id="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder="Ihr Name"
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-primary focus:border-transparent text-gray-900 placeholder-gray-400"
+                          />
+                        </div>
+
+                        {/* Email Field (Required) */}
+                        <div>
+                          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                            E-Mail <span className="text-red-500">*</span>
+                          </label>
+                          <input
+                            type="email"
+                            id="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="ihre@email.de"
+                            required
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-primary focus:border-transparent text-gray-900 placeholder-gray-400"
+                          />
+                        </div>
+
+                        {/* Consent Checkbox */}
+                        <div className="flex items-start gap-3">
+                          <input
+                            type="checkbox"
+                            id="consent"
+                            checked={consent}
+                            onChange={(e) => setConsent(e.target.checked)}
+                            required
+                            className="mt-1 w-4 h-4 accent-accent-primary cursor-pointer"
+                          />
+                          <label htmlFor="consent" className="text-sm text-gray-600 cursor-pointer">
+                            Ich stimme zu, dass meine E-Mail-Adresse für den PDF-Download und
+                            gelegentliche Updates zu KI-Themen verwendet werden darf.
+                            <span className="text-gray-800 font-medium"> Abmeldung jederzeit möglich.</span>
+                          </label>
+                        </div>
+
+                        {/* Submit Button */}
+                        <button
+                          type="submit"
+                          disabled={!email || !consent || isSubmitting}
+                          className="w-full px-6 py-4 bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-semibold rounded-lg text-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                              </svg>
+                              Wird geladen...
+                            </>
+                          ) : (
+                            <>
+                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                              </svg>
+                              PDF jetzt herunterladen
+                            </>
+                          )}
+                        </button>
+                      </form>
                     </div>
 
                     {/* Info Text */}
