@@ -24,7 +24,7 @@ export default function UeberUnsPage() {
       name: 'Konrad Schreiner',
       role: 'Co-Founder',
       department: 'Technische Umsetzung & KI-Architektur',
-      image: '/images/team/konrad-schreiner.jpg',
+      image: '/images/team/Konrad2.jpeg',
       linkedin: 'https://www.linkedin.com/in/konrad-schreiner-6b649830a/',
       bio: 'Baut die technischen Systeme und KI-Architekturen, die Axtrelis-Kunden nutzen.',
       isFounder: true,

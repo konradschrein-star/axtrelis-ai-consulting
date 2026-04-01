@@ -19,7 +19,7 @@ const teamMembers = [
     specialty: 'Technische Umsetzung & KI-Architektur',
     linkedin: 'https://www.linkedin.com/in/konrad-schreiner-6b649830a/',
     description: 'Entwickelt KI-Agenten und Automatisierungslösungen mit modernsten Technologien.',
-    image: '/images/team/konrad-schreiner.jpg',
+    image: '/images/team/Konrad2.jpeg',
   },
   {
     name: 'Niclas',
