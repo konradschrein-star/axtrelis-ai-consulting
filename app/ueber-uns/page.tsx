@@ -1,21 +1,20 @@
+'use client';
+
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
-
-export const metadata = {
-  title: 'Über uns - Das Team hinter Axtrelis | AI Consulting',
-  description: 'Lernen Sie das Team hinter Axtrelis kennen: Experten für KI-Consulting, Automatisierung und technische Umsetzung.',
-};
+import { usePerformance } from '@/components/PerformanceWrapper';
 
 export default function UeberUnsPage() {
+  const { highPerformance } = usePerformance();
   const team = [
     // Co-Founder
     {
       name: 'Rayan Tawfik',
       role: 'Co-Founder',
       department: 'Consulting & Business Development',
-      image: '/images/team/rayan-tawfik.jpg',
+      image: '/images/team/rayan-tawfik.webp',
       linkedin: 'https://www.linkedin.com/in/rayan-stefan-tawfik/',
       bio: 'Verantwortlich für die strategische Ausrichtung und Geschäftsentwicklung bei Axtrelis.',
       isFounder: true,
@@ -24,7 +23,7 @@ export default function UeberUnsPage() {
       name: 'Konrad Schreiner',
       role: 'Co-Founder',
       department: 'Technische Umsetzung & KI-Architektur',
-      image: '/images/team/Konrad2.jpeg',
+      image: '/images/team/Konrad2.webp',
       linkedin: 'https://www.linkedin.com/in/konrad-schreiner-6b649830a/',
       bio: 'Baut die technischen Systeme und KI-Architekturen, die Axtrelis-Kunden nutzen.',
       isFounder: true,
@@ -33,7 +32,7 @@ export default function UeberUnsPage() {
       name: 'Niclas',
       role: 'Co-Founder',
       department: 'Head of Development',
-      image: '/images/team/niclas.jpg',
+      image: '/images/team/niclas.webp',
       linkedin: null,
       bio: 'Leitet die technische Entwicklung und stellt sicher, dass Projekte termingerecht umgesetzt werden.',
       isFounder: true,
@@ -43,7 +42,7 @@ export default function UeberUnsPage() {
       name: 'Joosten Weber',
       role: 'Sales',
       department: 'Website-Vertrieb',
-      image: '/images/team/Joosten.jpg',
+      image: '/images/team/Joosten.webp',
       linkedin: 'https://www.linkedin.com/in/joosten-weber-300436382/',
       bio: 'Berät Unternehmen bei der digitalen Präsenz und bringt Webste Vertrieb zu neuen Kunden.',
       isFounder: false,
@@ -52,7 +51,7 @@ export default function UeberUnsPage() {
       name: 'Frederik',
       role: 'Co-Founder',
       department: '',
-      image: '/images/team/Frederik.jpeg',
+      image: '/images/team/Frederik.webp',
       linkedin: null,
       bio: 'Mitgründer von Axtrelis.',
       isFounder: true,
@@ -92,7 +91,9 @@ export default function UeberUnsPage() {
                 >
                   {/* Photo */}
                   <div className="relative w-32 h-32 mx-auto mb-6">
-                    <div className="absolute inset-0 bg-gradient-to-br from-accent-primary to-accent-secondary rounded-full opacity-20 blur-xl"></div>
+                    {highPerformance && (
+                      <div className="absolute inset-0 bg-gradient-to-br from-accent-primary to-accent-secondary rounded-full opacity-20 blur-xl"></div>
+                    )}
                     <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-accent-primary/20">
                       <Image
                         src={member.image}
@@ -100,6 +101,8 @@ export default function UeberUnsPage() {
                         fill
                         className="object-cover object-center"
                         style={{ aspectRatio: '1/1' }}
+                        priority={false}
+                        quality={highPerformance ? 90 : 75}
                       />
                     </div>
                   </div>

@@ -281,3 +281,51 @@ html {
 .bg-gradient-radial {
   background: radial-gradient(circle at center, var(--color-start), var(--color-mid), var(--color-end));
 }
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Disable all animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Remove blur effects for better performance */
+  .blur-xl,
+  .blur-lg,
+  .blur-md,
+  .blur-sm {
+    filter: none !important;
+  }
+}
+
+/* Low-performance mode utilities */
+.low-perf-mode {
+  /* Disable expensive effects */
+  filter: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.low-perf-mode * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* High-performance only effects */
+.high-perf-only {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .high-perf-only {
+    display: none;
+  }
+}

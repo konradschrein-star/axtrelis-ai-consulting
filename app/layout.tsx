@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { PerformanceWrapper } from "@/components/PerformanceWrapper";
 
 export const metadata: Metadata = {
   title: "Axtrelis | KI-Consulting für den Mittelstand",
@@ -22,8 +23,9 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body className="antialiased text-white bg-black">
-        {/* Content */}
-        {children}
+        <PerformanceWrapper>
+          {children}
+        </PerformanceWrapper>
       </body>
     </html>
   );

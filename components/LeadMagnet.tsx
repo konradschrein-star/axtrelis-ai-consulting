@@ -1,23 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 
 export default function LeadMagnet() {
-  const [email, setEmail] = useState('');
-  const [consent, setConsent] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email && consent) {
-      // TODO: Integrate with CRM/Newsletter tool
-      console.log('Lead Magnet submitted:', email);
-      setSubmitted(true);
-      // Trigger PDF download
-      window.open('/assets/ki-mittelstand-leitfaden.pdf', '_blank');
-    }
-  };
+  // Tally Form ID
+  const TALLY_FORM_ID = 'ODYzOg';
 
   return (
     <section className="py-24 px-6">
@@ -57,60 +44,25 @@ export default function LeadMagnet() {
               funktioniert, und ein Selbstcheck für Ihr Unternehmen.
             </p>
 
-            {/* Form */}
-            {!submitted ? (
-              <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-                <div className="mb-4">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Ihre E-Mail-Adresse"
-                    required
-                    className="w-full px-4 py-3 bg-background-primary/80 backdrop-blur-sm border border-border rounded-lg text-white placeholder-text-muted focus:outline-none focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20 transition-colors"
-                  />
-                </div>
+            {/* Tally Form Embed */}
+            <div className="max-w-md mx-auto">
+              <iframe
+                src={`https://tally.so/embed/${TALLY_FORM_ID}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1`}
+                width="100%"
+                height="350"
+                frameBorder="0"
+                marginHeight={0}
+                marginWidth={0}
+                title="PDF Download - Axtrelis"
+                className="rounded-lg"
+              ></iframe>
+            </div>
 
-                <div className="mb-6 flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    id="consent"
-                    checked={consent}
-                    onChange={(e) => setConsent(e.target.checked)}
-                    required
-                    className="mt-1 w-4 h-4 accent-accent-primary cursor-pointer"
-                  />
-                  <label htmlFor="consent" className="text-sm text-text-secondary cursor-pointer">
-                    Ich stimme zu, dass meine E-Mail-Adresse für den PDF-Download
-                    und gelegentliche Updates zu KI-Themen verwendet werden darf.
-                    (Abmeldung jederzeit möglich)
-                  </label>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={!consent || !email}
-                  className="w-full px-6 py-4 bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-semibold rounded-lg text-lg shadow-glow hover:shadow-glow-strong hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-                >
-                  Jetzt kostenlos herunterladen
-                </button>
-              </form>
-            ) : (
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-green-500/20 border-2 border-green-500 rounded-full flex items-center justify-center">
-                  <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <p className="text-xl text-white font-semibold mb-2">
-                  Vielen Dank!
-                </p>
-                <p className="text-text-secondary">
-                  Ihr PDF wird in Kürze heruntergeladen. Prüfen Sie Ihr E-Mail-Postfach
-                  für weitere Informationen.
-                </p>
-              </div>
-            )}
+            {/* Info Text */}
+            <p className="text-xs text-text-muted text-center mt-4 max-w-md mx-auto">
+              Nach dem Absenden werden Sie zur Download-Seite weitergeleitet.
+              Ihre E-Mail wird ausschließlich für Updates zu KI-Themen verwendet (Abmeldung jederzeit möglich).
+            </p>
           </div>
         </motion.div>
       </div>

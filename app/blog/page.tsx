@@ -1,6 +1,7 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata = {
   title: 'Blog - KI im Mittelstand | Axtrelis',
@@ -17,6 +18,8 @@ export default function BlogPage() {
       date: '2026-03-15',
       readTime: '5 Min.',
       slug: 'was-ist-ein-ki-agent',
+      gradient: 'from-blue-500 to-cyan-500',
+      icon: '🤖',
     },
     {
       title: '5 Prozesse in Ihrem Unternehmen, die KI heute schon übernehmen kann',
@@ -25,6 +28,8 @@ export default function BlogPage() {
       date: '2026-03-10',
       readTime: '7 Min.',
       slug: '5-prozesse-ki-automatisierung',
+      gradient: 'from-purple-500 to-pink-500',
+      icon: '⚡',
     },
     {
       title: 'KI einführen ohne das Team zu verlieren',
@@ -33,6 +38,8 @@ export default function BlogPage() {
       date: '2026-03-05',
       readTime: '6 Min.',
       slug: 'ki-einfuehren-change-management',
+      gradient: 'from-green-500 to-teal-500',
+      icon: '👥',
     },
     {
       title: 'Warum die meisten KI-Projekte scheitern (und wie Sie es richtig machen)',
@@ -41,6 +48,8 @@ export default function BlogPage() {
       date: '2026-02-28',
       readTime: '8 Min.',
       slug: 'ki-projekte-fehler-vermeiden',
+      gradient: 'from-orange-500 to-red-500',
+      icon: '🎯',
     },
   ];
 
@@ -96,38 +105,46 @@ export default function BlogPage() {
               {placeholderArticles.map((article) => (
                 <div
                   key={article.slug}
-                  className="bg-background-card border border-border rounded-2xl p-8 hover:border-accent-primary/30 transition-colors opacity-50"
+                  className="bg-background-card border border-border rounded-2xl overflow-hidden hover:border-accent-primary/30 transition-colors opacity-50"
                 >
-                  {/* Category */}
-                  <div className="flex items-center space-x-3 mb-4">
-                    <span className="px-3 py-1 bg-accent-primary/10 border border-accent-primary/20 rounded-full text-accent-primary text-xs font-semibold uppercase tracking-wide">
-                      {article.category}
-                    </span>
-                    <span className="text-text-muted text-sm">
-                      {article.readTime} Lesezeit
-                    </span>
+                  {/* Gradient Header Image */}
+                  <div className={`h-48 bg-gradient-to-br ${article.gradient} flex items-center justify-center`}>
+                    <span className="text-8xl opacity-80">{article.icon}</span>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-xl font-bold text-white mb-3 line-clamp-2">
-                    {article.title}
-                  </h3>
+                  {/* Content */}
+                  <div className="p-8">
+                    {/* Category */}
+                    <div className="flex items-center space-x-3 mb-4">
+                      <span className="px-3 py-1 bg-accent-primary/10 border border-accent-primary/20 rounded-full text-accent-primary text-xs font-semibold uppercase tracking-wide">
+                        {article.category}
+                      </span>
+                      <span className="text-text-muted text-sm">
+                        {article.readTime} Lesezeit
+                      </span>
+                    </div>
 
-                  {/* Excerpt */}
-                  <p className="text-text-secondary mb-4 leading-relaxed line-clamp-3">
-                    {article.excerpt}
-                  </p>
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-white mb-3 line-clamp-2">
+                      {article.title}
+                    </h3>
 
-                  {/* Date */}
-                  <div className="flex items-center justify-between text-sm text-text-muted">
-                    <span>
-                      {new Date(article.date).toLocaleDateString('de-DE', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </span>
-                    <span className="text-accent-primary/50">Kommt bald</span>
+                    {/* Excerpt */}
+                    <p className="text-text-secondary mb-4 leading-relaxed line-clamp-3">
+                      {article.excerpt}
+                    </p>
+
+                    {/* Date */}
+                    <div className="flex items-center justify-between text-sm text-text-muted">
+                      <span>
+                        {new Date(article.date).toLocaleDateString('de-DE', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </span>
+                      <span className="text-accent-primary/50">Kommt bald</span>
+                    </div>
                   </div>
                 </div>
               ))}
