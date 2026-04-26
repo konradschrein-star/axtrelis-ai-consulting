@@ -9,7 +9,6 @@ import { usePerformance } from '@/components/PerformanceWrapper';
 export default function UeberUnsPage() {
   const { highPerformance } = usePerformance();
   const team = [
-    // Co-Founder
     {
       name: 'Rayan Tawfik',
       role: 'Co-Founder',
@@ -17,7 +16,6 @@ export default function UeberUnsPage() {
       image: '/images/team/rayan-tawfik.webp',
       linkedin: 'https://www.linkedin.com/in/rayan-stefan-tawfik/',
       bio: 'Verantwortlich für die strategische Ausrichtung und Geschäftsentwicklung bei Axtrelis.',
-      isFounder: true,
     },
     {
       name: 'Konrad Schreiner',
@@ -26,7 +24,6 @@ export default function UeberUnsPage() {
       image: '/images/team/Konrad2.webp',
       linkedin: 'https://www.linkedin.com/in/konrad-schreiner-6b649830a/',
       bio: 'Baut die technischen Systeme und KI-Architekturen, die Axtrelis-Kunden nutzen.',
-      isFounder: true,
     },
     {
       name: 'Niclas',
@@ -35,17 +32,6 @@ export default function UeberUnsPage() {
       image: '/images/team/niclas.webp',
       linkedin: null,
       bio: 'Leitet die technische Entwicklung und stellt sicher, dass Projekte termingerecht umgesetzt werden.',
-      isFounder: true,
-    },
-    // Sales & Vertrieb
-    {
-      name: 'Joosten Weber',
-      role: 'Sales',
-      department: 'Website-Vertrieb',
-      image: '/images/team/Joosten.webp',
-      linkedin: 'https://www.linkedin.com/in/joosten-weber-300436382/',
-      bio: 'Berät Unternehmen bei der digitalen Präsenz und bringt Webste Vertrieb zu neuen Kunden.',
-      isFounder: false,
     },
     {
       name: 'Frederik',
@@ -54,12 +40,8 @@ export default function UeberUnsPage() {
       image: '/images/team/Frederik.webp',
       linkedin: null,
       bio: 'Mitgründer von Axtrelis.',
-      isFounder: true,
     },
   ];
-
-  const founders = team.filter((member) => member.isFounder);
-  const sales = team.filter((member) => !member.isFounder);
 
   return (
     <div className="min-h-screen bg-black">
@@ -78,13 +60,13 @@ export default function UeberUnsPage() {
             </p>
           </div>
 
-          {/* Co-Founder Section */}
+          {/* Team Section */}
           <div className="mb-24">
             <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
               Gründer & Leitung
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {founders.map((member) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {team.map((member) => (
                 <div
                   key={member.name}
                   className="bg-background-card border border-border rounded-2xl p-8 hover:border-accent-primary/30 transition-colors"
@@ -110,63 +92,6 @@ export default function UeberUnsPage() {
                   {/* Info */}
                   <div className="text-center mb-4">
                     <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
-                    <p className="text-accent-primary font-semibold text-sm mb-2">
-                      {member.role}
-                    </p>
-                    <p className="text-text-muted text-sm">{member.department}</p>
-                  </div>
-
-                  {/* Bio */}
-                  <p className="text-text-secondary text-sm text-center mb-6 leading-relaxed">
-                    {member.bio}
-                  </p>
-
-                  {/* LinkedIn */}
-                  {member.linkedin && (
-                    <div className="text-center">
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center space-x-2 text-accent-primary hover:text-accent-secondary transition-colors text-sm"
-                      >
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                        </svg>
-                        <span>LinkedIn</span>
-                      </a>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Sales Team Section */}
-          <div className="mb-24">
-            <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
-              Sales & Vertrieb
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {sales.map((member) => (
-                <div
-                  key={member.name}
-                  className="bg-background-card border border-border rounded-2xl p-8 hover:border-accent-primary/30 transition-colors"
-                >
-                  {/* Photo */}
-                  <div className="relative w-24 h-24 mx-auto mb-6">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      width={96}
-                      height={96}
-                      className="rounded-full object-cover border-2 border-border"
-                    />
-                  </div>
-
-                  {/* Info */}
-                  <div className="text-center mb-4">
-                    <h3 className="text-lg font-bold text-white mb-1">{member.name}</h3>
                     <p className="text-accent-primary font-semibold text-sm mb-2">
                       {member.role}
                     </p>

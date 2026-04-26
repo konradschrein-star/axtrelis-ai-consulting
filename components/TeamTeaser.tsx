@@ -30,14 +30,6 @@ const teamMembers = [
     image: '/images/team/niclas.jpg',
   },
   {
-    name: 'Joosten Weber',
-    role: 'Sales',
-    specialty: 'Website-Vertrieb',
-    linkedin: 'https://www.linkedin.com/in/joosten-weber-300436382/',
-    description: 'Spezialist für Website-Design und digitale Präsenz.',
-    image: '/images/team/Joosten.jpg',
-  },
-  {
     name: 'Frederik',
     role: 'Co-Founder',
     specialty: '',
@@ -63,12 +55,12 @@ export default function TeamTeaser() {
             Das <span className="gradient-text">Team</span> hinter Axtrelis
           </h2>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Vier Gründer, ein Vertriebsexperte — eine Mission: KI greifbar machen
+            Vier Gründer — eine Mission: KI greifbar machen
           </p>
         </motion.div>
 
         {/* Team Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
